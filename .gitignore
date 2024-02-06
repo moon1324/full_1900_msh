@@ -1,0 +1,28 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Distributed .zip files
+distributed_files
+
+# Resource folders of each folders
+html/resource/
+css/resource/
+git/resource/
+js/resource/
+
+!html/resource/images
+
+!css/resource/fonts
+!css/resource/images
+
+!js/resource/images
