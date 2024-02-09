@@ -95,6 +95,28 @@
 // 결제 상품 가격과 결제 상태를 전달받아서
 // 결제 상태가 true일 때 "000원 결제 완료"
 // 결제 상태가 false일 때 "000원 결제 취소" 출력
+// const getPaymentStatus = (itemPrice, paymentStatus, callback) => {
+//     if (callback) {
+// return붙여주기
+//         callback(itemPrice, paymentStatus);
+//     }
+//     return itemPrice, paymentStatus;
+// };
+// status자리에 itemPrice, paymentStatus넣고, itemPrice, paymentStatus 자리에 값 넣어주기
+// const paymentCheck = getPaymentStatus(itemPrice, paymentStatus, (status) =>
+//     paymentStatus ? `${itemPrice}원 결제완료` : `${itemPrice}원 결제취소`
+// );
 
+const getPaymentStatus = (itemPrice, paymentStatus, callback) => {
+    if (callback) {
+        return callback(itemPrice, paymentStatus);
+    }
+    return itemPrice, paymentStatus;
+};
+
+const checkPayment = getPaymentStatus(2000, false, (itemPrice, paymentStatus) =>
+    paymentStatus ? `${itemPrice}원 결제 완료` : `${itemPrice}원 결제 취소`
+);
+console.log(checkPayment);
 // 숙제
 // 콜백함수 문제 3개씩 만들어오기
