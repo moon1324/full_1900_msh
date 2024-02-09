@@ -25,3 +25,13 @@
 // }
 
 // printName("한동석", 5);
+
+// 홀수를 짝수로 짝수를 홀수로 변환해주는 함수
+function change(number) {
+    return ++number;
+}
+
+const result = change(11);
+const message = result % 2 == 0 ? "짝수" : "홀수";
+
+console.log(message);
