@@ -74,6 +74,21 @@ const add = (number1, number2, callback) => {
 // 결제 상품 가격과 결제 상태를 전달받아서
 // 결제 상태가 true일 때 "000원 결제 완료"
 // 결제 상태가 false일 때 "000원 결제 취소" 출력
+// function setStatus(price, status, callback) {
+//     if (callback) {
+//         callback(status ? `${price}원 결제 완료` : `${price}원 결제 취소`);
+//     }
+// }
 
-// 숙제
-// 콜백함수 문제 3개씩 만들어오기
+// 기획
+
+const setStatus = (price, status, callback) => {
+    let result = status ? `${price}원 결제 완료` : `${price}원 결제 취소`;
+    if (callback) {
+        callback(result);
+    }
+
+    return result;
+};
+
+setStatus(3000, false, console.log);
