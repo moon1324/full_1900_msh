@@ -15,7 +15,7 @@ hong = new Employee("홍길동", 1000);
 
 // 객체로 프로토타입의 프로퍼티를 수정하면, 객체의 프로퍼티에 추가된다.
 // 객체로 프로토타입의 프로퍼티를 수정할 수 없다. 단, 사용은 가능하다.
-// han.totalIncome = 100; // 객체의 프로퍼티에 추가
+// moon.totalIncome = 100; // 객체의 프로퍼티에 추가
 // console.log(moon.totalIncome); // 객체의 프로퍼티에 접근
 
 // 객체에 프로퍼티가 없으면, 프로토타입의 프로퍼티에서 찾는다.
@@ -26,7 +26,7 @@ hong = new Employee("홍길동", 1000);
 // console.log(hong.totalIncome);
 
 // Employee.prototype.totalIncome += hong.income;
-// console.log(han.totalIncome);
+// console.log(moon.totalIncome);
 
 // 공통 요소를 쉽고 편하게 관리하고자 프로토타입의 프로퍼티에 선언한다.
 Employee.prototype.printInfo = function () {
