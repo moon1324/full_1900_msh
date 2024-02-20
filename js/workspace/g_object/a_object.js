@@ -10,7 +10,7 @@
 // ★ 객체는 값으로 봐야한다
 
 let user = {
-    name: "한동석",
+    name: "michael",
     age: 20,
     address: "경기도",
     introduce: () => {
