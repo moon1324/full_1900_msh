@@ -1,18 +1,18 @@
 // 게시글
 // 번호, 제목, 내용
 let post = {
-    number: 1,
-    title: "피자스쿨",
-    content: "빠른 배송! 기가막힌 맛!",
+    number: 3,
+    title: "테스트 제목3",
+    content: "테스트 내용3",
 };
 
 // 후기
-// 번호, 내용, 별점(0-5)
-let review = {
-    number: 1,
-    content: "맛있어요~",
-    star: 5,
+// 번호, 내용, 별점(0~5)
+let reply = {
+    number: 2,
+    content: "테스트 댓글2",
+    star: 4,
     post: post,
 };
 
-console.log(review.post.title);
+console.log(reply.post.title);
