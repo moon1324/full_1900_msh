@@ -154,3 +154,18 @@
 // }, {});
 
 // console.log(result);
+
+// new Array(확보해놓을 공간 수): 미리 칸수를 확보해 놓을 수 있다.
+// 하지만 공간만 확보되었고 값은 아무것도 들어있지 않기 때문에(심지어 undefined조차 들어있지 않다)
+// forEach, map 등 반복을 진행해야 하는 프로퍼티는 동작하지 않는다.
+// let datas = new Array(20);
+// datas.forEach((data) => {
+//     console.log(data);
+// });
+
+// 따라서 미리 값을 세팅하기 위해서 fill(초기값)을 사용해준다.
+// 이렇게 해야 20개의 공간에 모든 값이 들어간다.
+// let datas = new Array(20).fill(0);
+// datas.forEach((data) => {
+//     console.log(data);
+// });

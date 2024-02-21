@@ -135,3 +135,62 @@
 // }
 
 // console.log(datas);
+
+// 회원 정보
+// 번호, 이름, 나이
+// 1, user1, 18
+// 2, user2, 19
+// 3, user3, 20
+
+function User(number, name, age) {
+    this.number = number;
+    this.name = name;
+    this.age = age;
+}
+
+let users = [];
+
+for (let i = 0; i < 3; i++) {
+    users.push(new User(i + 1, `user${i + 1}`, 18 + i));
+}
+
+// 회원 목록 중 회원 이름만 출력
+users.forEach((user) => {
+    console.log(user.name);
+});
+
+// 회원 목록 중 나이가 20살 이상인 회원 추출 후 전체 정보 출력
+users
+    .filter((user) => user.age >= 20)
+    .forEach((user) => {
+        console.log(`${user.number}. ${user.name}: ${user.age}살`);
+    });
+
+// 상품 정보
+// 번호, 상품명, 가격, 구매 회원
+// 3, 상품1, 3000, user1
+// 8, 상품3, 1000, user2
+function Product(number, name, price, user) {
+    this.number = number;
+    this.name = name;
+    this.price = price;
+    this.user = user;
+}
+
+let products = [
+    new Product(3, "상품1", 3000, users[0]),
+    new Product(8, "상품3", 1000, users[1]),
+];
+
+// 상품 목록을, 상품을 구매한 구매 회원의 목록으로 변경한다.
+let buyers = products.map((product) => product.user);
+
+// 구매자의 전체 정보를 출력한다.
+buyers.forEach((buyer) => {
+    console.log(`${buyer.number}. ${buyer.name}: ${buyer.age}살`);
+});
+
+// 1~100까지 합 출력
+let numbers = new Array(100).fill(0).map((_, i) => i + 1);
+const total = numbers.reduce((total, number) => total + number);
+console.log(total);
