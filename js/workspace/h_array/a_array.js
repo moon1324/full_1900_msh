@@ -67,7 +67,7 @@
 // console.log(datas.indexOf(156));
 
 // forEach(callback): 전달한 callback함수의 매개변수에 값, 인덱스, 원본객체를 전달한다.
-// let datas = [10, 20, 15, 30, 25];
+let datas = [10, 20, 15, 30, 25];
 
 // 순서 상 매개변수를 작성해야 하지만, 사용하지 않는다면, _(언더바)를 작성한다.
 // datas.forEach((_, i, datas) => {
@@ -76,9 +76,9 @@
 
 // console.log(datas);
 
-// datas.forEach((data) => {
-//     console.log(data);
-// });
+datas.forEach((data) => {
+    console.log(data);
+});
 
 // map(callback): 기존 값을 callback함수의 리턴값으로 변경시킨다. 작업이 완료된 Array객체를 리턴한다.
 // let datas = [10, 20, 15, 30, 25];
