@@ -1,13 +1,13 @@
 // 선언과 동시에 사용
 // (function () {})();
 
-// const module = function () {
+// const module = (function () {
 //     function a() {}
 //     function b() {}
 //     function c() {}
 //     function d() {}
 //     return { a: a, b: b, c: c, d: d };
-// };
+// })();
 
 // module.a();
 // module.b();
