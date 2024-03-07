@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>클릭 이벤트 실습</title>
-</head>
-<body>
-    <form action="">
-        <div>
-            <input type="text" id = "id" placeholder="아이디">
-        </div>
-        <p></p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>클릭 이벤트 실습</title>
+    </head>
+    <body>
+        <form action="">
+            <div>
+                <input type="text" id="id" placeholder="아이디" />
+            </div>
+            <p id="idMessage"></p>
 
-        <div>
-            <input type="password" id = "password" placeholder="비밀번호">
-        </div>
-        <p></p>
+            <div>
+                <input type="password" id="password" placeholder="비밀번호" />
+            </div>
+            <p id="passwordMessage"></p>
 
-        <button type="button">검사</button>
-    </form>
-</body>
-<script>
-    // 검사 버튼 클릭 시,
-    // 1. 아이디 검사
-    // 1-1. 아이디가 입력되지 않았을 때 아래의 p태그에 적절한 메세지 작성(빨간색)
-    // 1-2. 아이디가 입력되었을 때 아래의 p태그에 적절한 메세지 작성(녹색)
+            <button type="button">검사</button>
+        </form>
+    </body>
+    <script>
+        // 검사 버튼 클릭 시,
+        // 1. 아이디 검사
+        // 1-1. 아이디가 입력되지 않았을 때 아래의 p태그에 적절한 메세지 작성(빨간색)
+        // 1-2. 아이디가 입력되었을 때 아래의 p태그에 적절한 메세지 작성(녹색)
 
-    // 2. 비밀번호 검사
-    // 2-1. 비밀번호가 입력되지 않았을 때 아래의 p태그에 적절한 메세지 작성(빨간색)
-    // 2-2. 비밀번호가 입력되었을 때 아래의 p태그에 적절한 메세지 작성(녹색)
+        // 2. 비밀번호 검사
+        // 2-1. 비밀번호가 입력되지 않았을 때 아래의 p태그에 적절한 메세지 작성(빨간색)
+        // 2-2. 비밀번호가 입력되었을 때 아래의 p태그에 적절한 메세지 작성(녹색)
 
-    const check = document.querySelector("input[type=button]");
-    
-    // check.addEventListener("click", (e) => {
-    //     // 이벤트가 발생한 객체
-    //     // console.log(e.target)
-    //     if(!document.getElementById("id").value){
-    //         document.getElementById("id").nextSibling().innerText("아이디를 입력해주세요")
-    //         document.getElementById("id").nextSibling().style.color("red");
-    //     }else{
-    //         document.getElementById("id").nextSibling().innerText("올바른 아이디 입니다")
-    //         document.getElementById("id").nextSibling().style.color("green");
-    //     }
+        const check = document.querySelector("button");
+        const idMessage = document.getElementById("idMessage");
+        const passwordMessage = document.getElementById("passwordMessage");
+        // const target = document.querySelector("p");
 
-    //     if(!document.getElementById("password".value)){
-    //         document.getElementById("password").nextSibling().innerText("비밀번호를 입력해주세요")
-    //         document.getElementById("password").nextSibling().style.color("red");
-    //     }else{
-    //         document.getElementById("password").nextSibling().innerText("올바른 비밀번호 입니다")
-    //         document.getElementById("password").nextSibling().style.color("green");
-    //     }
-    // });
-</script>
+        check.addEventListener("click", (e) => {
+            // 이벤트가 발생한 객체
+            // console.log(e.target);
+            if (!document.getElementById("id").value) {
+                idMessage.innerText = "아이디를 입력해주세요";
+                idMessage.style.color = "red";
+            } else {
+                idMessage.innerText = "아이디가 입력되었습니다";
+                idMessage.style.color = "green";
+            }
+
+            if (!document.getElementById("password").value) {
+                passwordMessage.innerText = "비밀번호를 입력해주세요";
+                passwordMessage.style.color = "red";
+            } else {
+                passwordMessage.innerText = "비밀번호가 입력되었습니다";
+                passwordMessage.style.color = "green";
+            }
+        });
+    </script>
 </html>
