@@ -16,6 +16,8 @@
         // 3개를 선택하면 3개의 value값이 선택된 순서대로 p태그에 작성된다.
         // 체크를 해제하면 해당 내용이 p태그에서 삭제된다.
 
+        // HTMLCollection.prototype.filter = Array.prototype.filter;
+
         const checkboxes = document.querySelectorAll("input[type=checkbox]");
         const result = document.getElementById("result");
 
@@ -27,8 +29,14 @@
                     }
                 } else {
                     if (result.innerText.includes(`${e.target.value}`)) {
-                        console.log(`${e.target.value} 요거 삭제해야함!`);
+                        // console.log(`${e.target.value} 요거 삭제해야함!`);
                         // filter 를 사용해서 없애기
+                        result.innerHTML = Array.from(result.childNodes)
+                            .filter((node) => {
+                                return node.textContent !== e.target.value;
+                            })
+                            .map((node) => node.outerHTML)
+                            .join("");
                     }
                 }
             });

@@ -24,15 +24,20 @@
     <script>
         // div 태그에 마우스를 올리면 p태그의 내용이 "안녕!"으로 바뀌고
         // 마우스를 떼면 "잘가!"로 바뀌게 한다.
+        // container 불러오기
         const container = document.getElementById("container");
+        // 안의 p태그 불러오기
         const p = document.querySelector("#container p");
 
+        // container에 mouseenter 이벤트를 준다
         container.addEventListener("mouseenter", (e) => {
+            // mouseenter 이벤트가 발생했을때 e.target의 자식요소에 "안녕!" 텍스트 추가
             e.target.firstElementChild.innerText = "안녕!";
             // p.innerText = "안녕!";
         });
-
+        // container에 mouseleave 이벤트를 준다
         container.addEventListener("mouseleave", (e) => {
+            // mouseleave 이벤트가 발생했을때 e.target의 자식요소에 "잘가!" 텍스트 추가
             e.target.firstElementChild.innerText = "잘가!";
         });
     </script>

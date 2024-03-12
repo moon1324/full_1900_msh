@@ -13,22 +13,36 @@
         // 입력한 키 중, 엔터일 경우 ul안에 li태그로 입력한 문자열값을 추가한다.
         // 이 때, 작성한 값을 사라지게 하고, ul 안에 있었던 li태그들은 사라지지 않는다.
         // ※ 아무것도 입력하지 않은 상태에서 엔터를 치면, input 태그의 테두리를 빨간색으로 적용한다.
+        // input 가져오기
         const input = document.getElementById("input");
+        // ul 가져오기
         const ul = document.getElementById("items");
+        // input의 원래 스타일을 담기위한 temp
         let temp;
+        // input에 keyup 이벤트를 준다
         input.addEventListener("keyup", (e) => {
+            // text값 초기화
             let text = ``;
+            // 엔터를 쳤는지 검사
             if (e.keyCode === 13) {
+                // 이벤트가 발생한곳에(input) 값이 있으면
                 if (e.target.value) {
+                    // 발생한곳의 스타일을 temp에다 넣은 기본스타일로 변경
                     e.target.style.border = temp;
+                    // text에 input에 들어있는 값을 li태그에 넣어서 저장
                     text = `<li>${e.target.value}</li>`;
+                    // ul안에 text(li)추가
                     ul.innerHTML += text;
+                    // e.target(input)안의 값을 초기화
                     e.target.value = "";
                     return;
                 }
+                // input의 스타일이 4px solid red가 아닐때
                 if (input.style.border !== "4px solid red") {
+                    // temp에 기존 스타일 담기
                     temp = input.style.border;
                 }
+                // 그리고, 4px solid red로 변경
                 input.style.border = "4px solid red";
             }
         });
