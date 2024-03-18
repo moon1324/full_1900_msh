@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이벤트 위임 실습</title>
+        <style>
+            #container {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 600px;
+                height: 600px;
+                background-color: gainsboro;
+                margin: 0 auto;
+            }
+            div.box1, div.box2 {
+                width: 200px;
+                height: 200px;
+                background-color: lightgray;
+                text-align: center;
+                line-height: 200px;
+            }
+            div.box1.change{
+                width: 200px;
+                height: 200px;
+                background-color: skyblue;
+                text-align: center;
+                line-height: 200px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+    <script>
+        const container = document.getElementById("container");
+        container.innerHTML = `
+            <div class="box1">박스1</div>
+            <div class="box2">박스2</div>
+        `;
+
+
+        // 박스 1을 눌렀을때 toggle()을 사용해서,
+        // 배경색을 변경 혹은 원래 배경색으로 변경을 진행한다
+        // 다른것을 눌렀을 때에는 아무런 변화가 없어야한다
+
+
+        // 부모인 container에 클릭이벤트 위임
+        container.addEventListener("click", (e) => {
+            // box1인지 확인
+            if(e.target.classList.contains("box1")){
+                // e.target에 뭐가 들어오는지 체크
+                console.log(e.target);
+                // toggle("change")로 change 클래스 넣기/빼기
+                e.target.classList.toggle("change")
+            }
+        });
+
+    </script>
+</html>

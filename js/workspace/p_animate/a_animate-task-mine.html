@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div#image-container {
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                /* overflow: hidden을 줘서 사이즈가 넘어가면 안보이게 만든다 */
+                overflow: hidden;
+            }
+
+            div#image1 {
+                background-image: url("./1.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 150px;
+                height: 150px;
+                cursor: pointer;
+                /* absolute를 줘서 두 이미지를 겹친다 */
+                position: absolute;
+                /* 초기 있어야할 이미지를 left: 0px 로 세팅 */
+                left: 0px;
+            }
+            div#image2 {
+                background-image: url("./2.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 150px;
+                height: 150px;
+                cursor: pointer;
+                /* absolute를 줘서 두 이미지를 겹친다 */
+                position: absolute;
+                /* left 150을 줘서 overflow를 준 부모 div에 의해 넘어가서 안보이게 만든다 */
+                left: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- image1이랑 image2를 같이 묶는 div -->
+        <!-- absolute를 줘서 두 이미지를 겹친 뒤 -->
+        <!-- left를 줘서  -->
+        <div id="image-container">
+            <!-- 첫 번째 이미지 -->
+            <div id="image1"></div>
+            <!-- 두 번째 이미지 -->
+            <div id="image2"></div>
+        </div>
+    </body>
+    <script>
+        // 두 이미지를 담은 컨테이너를 가져온다
+        const container = document.getElementById("image-container");
+        // 각각의 이미지를 따로 가져온다
+        const image1 = document.getElementById("image1");
+        const image2 = document.getElementById("image2");
+
+        // 클릭이벤트를 주고 이벤트 위임으로 e.target이 어떤건지에 따라 image1, image2의 위치를 바꾼다
+        container.addEventListener("click", (e) => {
+            console.log(e.target);
+            // e.target.id가 image1이면
+            if (e.target.id === "image1") {
+                // image1을 left: -150px인 왼쪽으로 넘긴다
+                image1.animate(
+                    {
+                        left: "-150px",
+                    },
+                    {
+                        // 0.1초만큼
+                        duration: 100,
+                        fill: "forwards",
+                    }
+                );
+                // image2fmf left: 0px 위치로 옮긴다
+                image2.animate(
+                    {
+                        left: "0px",
+                    },
+                    {
+                        // 0.1초만큼
+                        duration: 100,
+                        fill: "forwards",
+                    }
+                );
+                // e.target.id가 image2이면
+            } else if (e.target.id === "image2") {
+                // image1의 위치를 left: 0px의 위치인 오른쪽으로 이동
+                image1.animate(
+                    {
+                        left: "0px",
+                    },
+                    {
+                        // 0.1초만큼
+                        duration: 100,
+                        fill: "forwards",
+                    }
+                );
+                // image2의 위치를 left: 150px의 위치인 오른쪽으로 이동
+                image2.animate(
+                    {
+                        left: "150px",
+                    },
+                    {
+                        // 0.1초만큼
+                        duration: 100,
+                        fill: "forwards",
+                    }
+                );
+            }
+        });
+    </script>
+</html>
