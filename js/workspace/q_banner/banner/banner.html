@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>슬라이드 배너</title>
+        <link rel="stylesheet" href="banner.css" />
+    </head>
+    <body>
+        <section class="container">
+            <div class="banner">
+                <div>
+                    <img src="./images/001.png" alt="" />
+                </div>
+                <div>
+                    <img src="./images/002.png" alt="" />
+                </div>
+                <div>
+                    <img src="./images/003.png" alt="" />
+                </div>
+                <div>
+                    <img src="./images/004.png" alt="" />
+                </div>
+                <div>
+                    <img src="./images/005.png" alt="" />
+                </div>
+                <div>
+                    <img src="./images/006.png" alt="" />
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        // const div = document.querySelector("div.banner");
+        // // setInterval(() => {}, 2000);
+        // // setInterval은 첫번째로 콜백함수, 두번째는 밀리초를 전달
+        // // 콜백함수를 밀리초마다 반복해라
+        // let count = 0;
+        // setInterval(() => {
+        //     count++;
+        //     // count 가 6일때 0으로 바꿔라
+        //     count === 6 && (count = 0);
+        //     div.style.transition = `transform 0.5s`;
+        //     div.style.transform = `translate(${-2000 * count}px)`;
+        // }, 2000);
+
+        // 무한슬라이드
+        // 맨 마지막에 있는 div 는 첫번쨰 이미지
+        const lastBanner = document.createElement("div");
+        const banner = document.querySelector("div.banner");
+        let count = 0;
+
+        lastBanner.innerHTML = `<img src="./images/001.png">`;
+        banner.appendChild(lastBanner);
+
+        setInterval(() => {
+            count++;
+            banner.style.transition = `transform 0.5s`;
+            banner.style.transform = `translate(${-2000 * count}px)`;
+
+            if (count === 6) {
+                setTimeout(() => {
+                    banner.style.transition = `transform 0s`;
+                    banner.style.transform = `translate(0px)`;
+                }, 500);
+                count = 0;
+            }
+        }, 2000);
+    </script>
+</html>

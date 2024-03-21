@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>슬라이드 배너</title>
+        <link rel="stylesheet" href="./my_banner.css" />
+    </head>
+    <body>
+        <section class="container">
+            <div class="banner">
+                <div>
+                    <img src="./images/001.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/002.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/003.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/004.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/005.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/006.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/007.jpg" alt="" />
+                </div>
+                <div>
+                    <img src="./images/008.jpg" alt="" />
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        // 마지막배너(첫배너) 만들기
+        const lastBanner = document.createElement("div");
+        // 배너 불러오기
+        const banner = document.querySelector("div.banner");
+        // 카운트 선언
+        let count = 0;
+
+        // 마지막배너에 첫배너 이미지 넣기
+        lastBanner.innerHTML = `<img src="./images/001.jpg">`;
+        banner.appendChild(lastBanner);
+
+        // 2초마다 반복
+        setInterval(() => {
+            // 카운트 증가
+            count++;
+            // 0.5초동안 변경
+            banner.style.transition = `transform 0.5s`;
+            // 슬라이드 밀기
+            banner.style.transform = `translate(${-1920 * count}px)`;
+
+            // 카운트가 8에 도달했을때
+            if (count === 8) {
+                // 0.5초 동안 기다린후 마지막배너와 첫배너 바꿔치기
+                setTimeout(() => {
+                    banner.style.transition = `transform 0s`;
+                    banner.style.transform = `translate(0px)`;
+                }, 500);
+                count = 0;
+            }
+        }, 2000);
+    </script>
+</html>
