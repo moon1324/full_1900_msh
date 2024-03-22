@@ -1,3 +1,28 @@
+div.wrap{
+    position: relative;
+}
+
+div.arrow{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+    top: 130px;
+}
+
+div.arrow.left{
+    left: 206px;
+}
+div.arrow.right{
+    transform: rotate(180deg);
+    right: 206px;
+}
+
+div.arrow > img{
+    width: 100%;
+    height: 100%;
+}
+
 section.container {
     margin: 0 auto;
     width: 1050px;
@@ -6,7 +31,10 @@ section.container {
 
 div.banner {
     display: flex;
-    width: 5607px;
+    /* case1 오리지널 상품배너시 */
+    /* width: 5607px; */
+    /* case2 무한슬라이드시 */
+    width: 7476px;
 }
 
 div.card {
@@ -42,9 +70,23 @@ div.show-all > a > span {
     text-align: center;
 }
 
+
+/* case1의 전체보기 아이콘 */
 .icon {
     background-image: url("./gtbutton.svg");
     width: 64px;
     height: 64px;
     margin-bottom: 18px;
+}
+
+/* case2의 밑 버튼 */
+div.buttons{
+    width: 1068px;
+    margin: 0 auto;
+    text-align: center;
+}
+div.buttons button{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
 }

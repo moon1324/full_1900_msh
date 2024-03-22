@@ -8,6 +8,7 @@
     </head>
     <body>
         <section class="container">
+            <div class="arrow left">&lt;</div>
             <div class="banner">
                 <div>
                     <img src="./images/001.png" alt="" />
@@ -28,6 +29,15 @@
                     <img src="./images/006.png" alt="" />
                 </div>
             </div>
+            <div class="arrow right">&gt;</div>
+            <div class="buttons">
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
         </section>
     </body>
     <script>
@@ -45,26 +55,183 @@
         // }, 2000);
 
         // 무한슬라이드
-        // 맨 마지막에 있는 div 는 첫번쨰 이미지
+        // 맨 처음에 있는 div는 맨 마지막 이미지
+        const firstBanner = document.createElement("div");
+        // 맨 마지막에 있는 div는 첫번째 이미지
         const lastBanner = document.createElement("div");
         const banner = document.querySelector("div.banner");
+        // 버튼 추가
+        const buttons = document.querySelectorAll("div.buttons button");
         let count = 0;
+        // 1번째 버튼을 temp에 담는다
+        let temp = buttons[0];
+        // 1번째 버튼색 검은색으로 설정
+        temp.style.backgroundColor = "black";
 
+        // 6번 이미지 뒤에 1번 이미지 추가
         lastBanner.innerHTML = `<img src="./images/001.png">`;
         banner.appendChild(lastBanner);
 
-        setInterval(() => {
-            count++;
-            banner.style.transition = `transform 0.5s`;
-            banner.style.transform = `translate(${-2000 * count}px)`;
+        // 1번이미지 앞에 6번 이미지 추가
+        firstBanner.innerHTML = `<img src="./images/006.png">`;
+        banner.insertBefore(
+            firstBanner,
+            document.querySelector("div.banner div")
+        );
+        // 맨 처음 이미지가 6번이기 때문에
+        // 처음부터 6번에서 1번으로 밀어준다
+        banner.style.transform = `translate(-2000px)`;
 
+        // 함수로 저장
+        const autoSlide = () => {
+            // 먼저 카운트 증가
+            count++;
+            // 0.5초동안 변경
+            banner.style.transition = `transform 0.5s`;
+            // 1번 앞에 6번이 새로 나왔기 때문에 -2000 * (count + 1) 로 밀기
+            banner.style.transform = `translate(${-2000 * (count + 1)}px)`;
+
+            // 카운트가 6에 도달하면
             if (count === 6) {
+                // 첫번째 이미지로 옮기기
                 setTimeout(() => {
+                    // 바로 바꾸기
                     banner.style.transition = `transform 0s`;
-                    banner.style.transform = `translate(0px)`;
+                    // (임시)6번 다음 1번으로 옮기기
+                    banner.style.transform = `translate(-2000px)`;
                 }, 500);
+                // 카운트 초기화
                 count = 0;
             }
-        }, 2000);
+            // temp(첫번째 버튼)의 색을 하얀색으로 변경
+            temp.style.backgroundColor = "#fff";
+            // 카운트에 해당하는 버튼을 검은색으로 변경
+            buttons[count].style.background = "black";
+            // 검은색으로 변경한 버튼을 temp에 담는다
+            temp = buttons[count];
+        };
+
+        // 새로운 id로 setInterval이 매번 실행되니까 let
+        // autoSlide()이렇게 실행하면 안되고
+        // 함수 주소값만 담는다
+        let id = setInterval(autoSlide, 2000);
+
+        // 이전, 다음버튼
+        const arrows = document.querySelectorAll("div.arrow");
+
+        // 첫번째로는 클릭되어야하니까 true로 초기값 설정
+        let arrowButtonCheck = true;
+
+        // 이전, 다음버튼 둘다 가져왔으니까 forEach 반복문으로 불러와서 이벤트 걸기
+        arrows.forEach((arrow) => {
+            arrow.addEventListener("click", (e) => {
+                // arrowbutton이 true면
+                if (arrowButtonCheck) {
+                    // false로 바꾸고
+                    arrowButtonCheck = false;
+                    // interval을 빠져나온다
+                    clearInterval(id);
+                    // arrowType 저장
+                    let arrowType = arrow.classList[1];
+                    // arrowType이 left면
+                    if (arrowType === "left") {
+                        // 카운트 하나 감소
+                        count--;
+                        // 0.5초동안 변경
+                        banner.style.transition = `transform 0.5s`;
+                        // {-2000 * (count + 1)}px로 이동
+                        banner.style.transform = `translate(${
+                            -2000 * (count + 1)
+                        }px)`;
+                        // 카운트가 -1, (임시)6번으로 이동하면
+                        if (count === -1) {
+                            setTimeout(() => {
+                                // 바로
+                                banner.style.transition = `transform 0s`;
+                                // 실제 6번째 로 이동
+                                banner.style.transform = `translate(-12000px)`;
+                            }, 500);
+                            // 그리고 카운트를 5로 변경
+                            // (count++로 바로 카운트가 올라가기 떄문)
+                            count = 5;
+                        }
+                    } else {
+                        // 카운트 증가
+                        count++;
+                        // 0.5초동안 변경
+                        banner.style.transition = `transform 0.5s`;
+                        // {-2000 * (count + 1)}px로 이동
+                        banner.style.transform = `translate(${
+                            -2000 * (count + 1)
+                        }px)`;
+                        // 카운트가 6, (임시)1번으로 이동하면
+                        if (count === 6) {
+                            // 0.5초 기다린 뒤
+                            setTimeout(() => {
+                                // 바로
+                                banner.style.transition = `transform 0s`;
+                                // 실제 첫번째로 이동
+                                banner.style.transform = `translate(-2000px)`;
+                            }, 500);
+                            // 카운트 초기화
+                            count = 0;
+                        }
+                    }
+
+                    // temp에 담긴 버튼색을 하얀색으로 변경
+                    temp.style.backgroundColor = "#fff";
+                    // 카운트에 해당하는 버튼을 검은색으로 변경
+                    buttons[count].style.background = "black";
+                    // 검은색으로 변경한 버튼을 temp에 담는다
+                    temp = buttons[count];
+
+                    // 바뀐 setInterval id를 다시 저장
+                    id = setInterval(autoSlide, 2000);
+                    // 버튼을 0.5초뒤 다시 true로 바꿔준다
+                    setTimeout(() => {
+                        arrowButtonCheck = true;
+                    }, 500);
+                }
+            });
+        });
+
+        // 버튼
+        // 버튼 연속클릭을 저지하기위한 buttonCheck true로 선언
+        let buttonCheck = true;
+        // 버튼들을 통째로 가져왔기때문에 forEach 반복문으로 버튼마다 이벤트리스너를 달아준다
+        buttons.forEach((button, i) => {
+            button.addEventListener("click", (e) => {
+                // buttonCheck가 true일때
+                if (buttonCheck) {
+                    // false로 바꿔주고
+                    buttonCheck = false;
+                    // interval 탈출
+                    clearInterval(id);
+
+                    // 카운트에 index값 대입
+                    count = i;
+                    // temp에 담긴 버튼의 버튼색 하얀색으로 변경
+                    temp.style.backgroundColor = "#fff";
+                    // 카운트에 해당하는 버튼을 검은색으로 변경
+                    buttons[count].style.background = "black";
+
+                    // 0.5초동안 변경
+                    banner.style.transition = "transform 0.5s";
+                    // {-2000 * (count + 1)}px로 이동
+                    banner.style.transform = `translate(${
+                        -2000 * (count + 1)
+                    }px)`;
+                    // temp에 카운트에 해당하는 버튼 담기
+                    temp = buttons[count];
+                    // interval 다시 실행
+                    id = setInterval(autoSlide, 2000);
+
+                    // 0.5초뒤 버튼을 true로 변경
+                    setTimeout(() => {
+                        buttonCheck = true;
+                    }, 500);
+                }
+            });
+        });
     </script>
 </html>
