@@ -32,5 +32,38 @@ const postService = (() => {
         }
     };
 
-    return { findAll: findAll, create: create, read: read };
+    // 수정
+    // const update = async (post) => {
+    //     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`,{
+    //         method: 'PUT',
+    //         body: JSON.stringify(post),
+    //         headers: {
+    //             'Content-Type': 'application/json; charset=utf-8'
+    //         }
+    //     });
+    //     const updatedPost = await response.json();
+    //     console.log(updatedPost);
+    // }
+
+    // 부분 수정
+    const update = async (post) => {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`,{
+            method: 'PATCH',
+            body: JSON.stringify(post),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        });
+        const updatedPost = await response.json();
+        console.log(updatedPost);
+    }
+
+    // 삭제
+    const remove = async (postId) => {
+        await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    return { findAll: findAll, create: create, read: read, update: update, remove: remove };
 })();

@@ -55,20 +55,20 @@ const userService = (() => {
     //       서버에서는 허용할 ORIGIN을 등록함으로써 해당 PC의 요청이 가능해진다.
     // 따라서, 모든 요청 방식은 대문자로 약속한다.
     // 전체 수정
-    // const update = async (user) => {
-    //         const response = await fetch(
-    //             `https://jsonplaceholder.typicode.com/users/${user.userId}`,
-    //             {
-    //                 method: "put",
-    //                 body: JSON.stringify(user),
-    //                 headers: {
-    //                     "Content-Type": "application/json; charset=utf-8",
-    //                 },
-    //             }
-    //         );
-    //         const updatedUser = await response.json();
-    //         console.log(updatedUser);
-    //     };
+    const update = async (user) => {
+        const response = await fetch(
+            `https://jsonplaceholder.typicode.com/users/${user.userId}`,
+            {
+                method: "PUT",
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                },
+            }
+        );
+        const updatedUser = await response.json();
+        console.log(updatedUser);
+    };
 
     // 부분 수정
     // const update = async ({userId, ...rest}) => {
@@ -87,5 +87,12 @@ const userService = (() => {
     //     console.log(updatedUser);
     // };
 
-    return { findAll: findAll, create: create, read: read, update: update };
+    // 삭제
+    const remove = async (userId) => {
+        await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    return { findAll: findAll, create: create, read: read, update: update, remove: remove };
 })();
