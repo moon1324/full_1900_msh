@@ -1,0 +1,396 @@
+/* common */
+a,
+input,
+button,
+div,
+li,
+textarea,
+form,
+label,
+select {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+    display: block;
+    vertical-align: middle;
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+    margin: 0;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+    border: 0 solid;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    line-height: inherit;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* nav */
+.nav {
+    width: 100%;
+    position: fixed;
+    /* top: 0px; */
+    top: -84px;
+    z-index: 110;
+    background-color: rgb(255, 255, 255);
+    border-bottom-width: 1px;
+    border-color: rgb(235 235 235);
+    /* 개요에 도착했을때 밑의 효과 넣기 */
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    transform: translateY(76px);
+}
+
+.nav-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-ul-wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 68px;
+    align-items: center;
+}
+
+.nav-ul {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow: hidden;
+}
+
+.nav-li {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+}
+
+.nav-li span {
+    font-size: 1rem;
+    line-height: normal;
+    letter-spacing: 0px;
+    font-weight: 500;
+    color: rgb(112 112 112);
+}
+
+/* 페이지가 해당 구간에 있을때 밑줄과 폰트 변경 */
+.nav-li span.on {
+    font-size: 1rem;
+    line-height: normal;
+    letter-spacing: 0px;
+    font-weight: 700;
+    color: rgb(18 115 228);
+}
+
+.underline {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+    z-index: 1;
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    background-color: rgb(18 115 228);
+}
+
+.nav-button-wrapper {
+    width: 128px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 8px;
+    border-width: 1.5px;
+    font-size: 0.875rem;
+    line-height: normal;
+    letter-spacing: 0px;
+    font-weight: 600;
+    width: 100%;
+    background-color: rgb(18 115 228);
+    color: rgb(255, 255, 255);
+    border-style: none;
+    padding: 9px 15px;
+}
+
+/* main */
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 96px;
+    margin-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.main-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    max-width: 1200px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* gallery */
+#gallery {
+    margin-bottom: 20px;
+}
+
+.gallery-article {
+    position: relative;
+}
+
+.gallery-grid {
+    max-width: 1200px;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+}
+
+.gallery-grid-main-photo-container {
+    grid-row: span 2 / span 2;
+    position: relative;
+}
+
+.gallery-grid-main-photo-wrap {
+    position: relative;
+    cursor: pointer;
+    /* height: 100%; */
+    height: 512px;
+    width: 640px;
+    min-width: 445px;
+}
+
+.gallery-grid-main-photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0px;
+    color: transparent;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    object-fit: cover;
+}
+
+.gallery-grid-photo-container {
+    grid-column: span 1 / span 1;
+    position: relative;
+}
+
+.gallery-grid-photo-wrap {
+    /* position: relative; */
+    /* height: 100%; */
+    height: 252px;
+    width: 272px;
+    min-width: 185.5px;
+    cursor: pointer;
+}
+
+.gallery-grid-photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0px;
+    color: transparent;
+    object-fit: cover;
+}
+
+.round-right-top {
+    border-top-right-radius: 12px;
+    object-fit: cover;
+}
+
+.round-right-bottom {
+    border-bottom-right-radius: 12px;
+    object-fit: cover;
+}
+
+.gallery-grid-other-button-container {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+}
+
+.gallery-grid-other-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 400px;
+    font-size: 0.875rem;
+    line-height: normal;
+    letter-spacing: 0px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 12px 16px 12px 14px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(51 51 51);
+}
+
+.gallery-grid-other-button svg {
+    height: 16px;
+    width: 16px;
+    fill: rgb(51, 51, 51);
+}
+
+.margin-left-4px {
+    margin-left: 4px;
+}
+
+/* detail */
+#detail {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(12, minmax(0px, 1fr));
+    column-gap: 24px;
+}
+
+.detail-info-container {
+    grid-column: span 8 / span 8;
+}
+
+.detail-info {
+    margin-bottom: 20px;
+    grid-column: span 8 / span 8;
+}
+
+/* outline */
+.outline-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.outline-title-container {
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.outline-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.outline-title-tags-container {
+    display: flex;
+    font-size: 1rem;
+    line-height: normal;
+    letter-spacing: 0px;
+    font-weight: 700;
+    color: rgb(73 98 122);
+}
+
+.outline-title-tags-container div {
+    display: flex;
+}
+
+.outline-title-tags-container svg {
+    margin-top: -1px;
+}
+
+.dot {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.outline-title {
+    font-size: 2rem;
+    line-height: 2.75rem;
+    letter-spacing: 0px;
+    overflow-wrap: break-word;
+    font-weight: 700;
+    color: rgb(51 51 51);
+}
+
+.outline-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-info-business-information {
+    border-top-width: 1px;
+    border-style: solid;
+    border-color: rgb(235 235 235);
+    cursor: pointer;
+    border-bottom-width: 1px;
+}
+
+.detail-side-bar-container {
+    grid-column: span 4 / span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 44px;
+}
+/* 다른숙소 */
+.main-other-hotel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px;
+}
