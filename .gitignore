@@ -19,6 +19,7 @@ html/resource/
 css/resource/
 git/resource/
 js/resource/
+react/resource/
 
 !html/resource/images
 
@@ -26,3 +27,6 @@ js/resource/
 !css/resource/images
 
 !js/resource/images
+
+# node_modules of 'study' in react folder
+react/workspace/study/node_modules
