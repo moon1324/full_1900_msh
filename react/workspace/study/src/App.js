@@ -1,5 +1,12 @@
 import "./App.css";
-import Count from "./state/basic/Count"
+import CheckInput from "./ref/basic/CheckInput";
+// import Check from "./ref/basic/Check";
+// import Checkbox from "./ref/basic/Checkbox";
+// import Name from "./ref/basic/Name";
+// import Color from "./state/basic/Color";
+// import Name from "./state/basic/Name";
+// import Count from "./state/basic/Count";
+// import Sound from "./state/basic/Sound";
 // import FoodContainer from "./map/FoodContainer";
 // import UserContainer from "./map/expert/UserContainer";
 // import Container from "./props/Container";
@@ -19,7 +26,14 @@ function App() {
         // <Container />
         // <FoodContainer />
         // <UserContainer />
-        <Count />
+        // <Count />
+        // <Sound />
+        // <Name />
+        // <Color />
+        // <Name />
+        // <Check />
+        // <Checkbox />
+        <CheckInput />
     );
 }
 
