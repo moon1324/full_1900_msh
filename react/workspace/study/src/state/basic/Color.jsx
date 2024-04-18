@@ -5,31 +5,67 @@ import React, { useState } from "react";
 // 핑크색 입력 시 글자의 색갈을 없앤다.
 
 const Color = () => {
-    const [style, setStyle] = useState({});
+    // color useState 사용, 초기값 "" 설정
+    const [color, setColor] = useState("");
+    // result useState 사용, 초기값 "초기값" 설정
     const [result, setResult] = useState("초기값");
+    // 빨간색
     const setColorRed = () => {
-        setStyle({
-            color: "red",
-        });
+        setColor("red");
     };
+    // 파란색
     const setColorBlue = () => {
-        setStyle({
-            color: "blue",
-        });
+        setColor("blue");
     };
-    const pinkInput = (e) => {
-        setResult(e.target.value);
-        e.target.value === "핑크색" && setStyle({});
+    // 입력한 키 value에 입력
+    const onResult = (e) => {
+        // value에 input의 입력값 담기
+        let value = e.target.value;
+        // value가 "핑크색" 일 때
+        if (value === "핑크색") {
+            // ""반환해서 color초기화
+            setColor("");
+        }
+        return setResult(value);
     };
 
     return (
         <div>
-            <p style={style}>{result}</p>
+            {/* 스타일 객체 안의 color??? */}
+            <p style={{ color }}>{result}</p>
             <button onClick={setColorRed}>빨간색</button>
             <button onClick={setColorBlue}>파란색</button>
-            <input type="text" onChange={pinkInput} />
+            <input type="text" onChange={onResult} />
         </div>
     );
 };
+
+// const Color = () => {
+//     const [style, setStyle] = useState({});
+//     const [result, setResult] = useState("초기값");
+//     const setColorRed = () => {
+//         setStyle({
+//             color: "red",
+//         });
+//     };
+//     const setColorBlue = () => {
+//         setStyle({
+//             color: "blue",
+//         });
+//     };
+//     const pinkInput = (e) => {
+//         setResult(e.target.value);
+//         e.target.value === "핑크색" && setStyle({});
+//     };
+
+//     return (
+//         <div>
+//             <p style={style}>{result}</p>
+//             <button onClick={setColorRed}>빨간색</button>
+//             <button onClick={setColorBlue}>파란색</button>
+//             <input type="text" onChange={pinkInput} />
+//         </div>
+//     );
+// };
 
 export default Color;

@@ -6,6 +6,7 @@ const Form = (props) => {
     // input태그 4개 이름, 나이, 핸드폰번호, 이메일
     // 화면쪽에서 유효값 검사
 
+    // 비구조화 할당
     const { inputsRef, formRef, onClickInputValue, style } = props;
     return (
         <div>
