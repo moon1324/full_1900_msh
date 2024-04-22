@@ -1,6 +1,8 @@
 import "./App.css";
-import CheckInput from "./ref/basic/CheckInput";
-import FoodContainer from "./ref/expert/FoodContainer";
+import SideEffect from "./LifeCycle/function/SideEffect";
+// import LifeCycleContainer from "./LifeCycle/class/LifeCycleContainer";
+// import CheckInput from "./ref/basic/CheckInput";
+// import FoodContainer from "./ref/expert/FoodContainer";
 // import Check from "./ref/basic/Check";
 // import Checkbox from "./ref/basic/Checkbox";
 // import Name from "./ref/basic/Name";
@@ -35,7 +37,9 @@ function App() {
         // <Check />
         // <Checkbox />
         // <CheckInput />
-        <FoodContainer />
+        // <FoodContainer />
+        // <LifeCycleContainer />
+        <SideEffect />
     );
 }
 
