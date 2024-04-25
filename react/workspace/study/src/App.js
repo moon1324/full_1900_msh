@@ -1,5 +1,8 @@
 import "./App.css";
-import SideEffect from "./LifeCycle/function/SideEffect";
+import StyledComponent01 from "./style/basic/StyledComponent01";
+import GlobalStyle from "./style/global";
+// import ProductContainer from "./LifeCycle/memoization/ProductContainer";
+// import SideEffect from "./LifeCycle/function/SideEffect";
 // import LifeCycleContainer from "./LifeCycle/class/LifeCycleContainer";
 // import CheckInput from "./ref/basic/CheckInput";
 // import FoodContainer from "./ref/expert/FoodContainer";
@@ -39,7 +42,12 @@ function App() {
         // <CheckInput />
         // <FoodContainer />
         // <LifeCycleContainer />
-        <SideEffect />
+        // <SideEffect />
+        // <ProductContainer />
+        <div>
+            <StyledComponent01 />
+            <GlobalStyle />
+        </div>
     );
 }
 
