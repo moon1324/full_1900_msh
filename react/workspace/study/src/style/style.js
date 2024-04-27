@@ -31,6 +31,7 @@ S.Button = styled.button`
     background-color: orchid;
     border: none;
     ${flexCenterColumn}
+    font-size: ${({ theme }) => theme.FONT_SIZE["h1"]};
 `;
 
 export default S;

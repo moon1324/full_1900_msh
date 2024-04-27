@@ -1,6 +1,11 @@
+import { ThemeProvider } from "styled-components";
 import "./App.css";
-import StyledComponent01 from "./style/basic/StyledComponent01";
-import GlobalStyle from "./style/global";
+// import StyledComponent01 from "./style/basic/StyledComponent01";
+// import GlobalStyle from "./style/global";
+import theme from "./style/theme";
+// import BasicContainer from "./style/basic/BasicContainer";
+import FontAwesome from "./style/fontAwesome/FontAwesome";
+import CharContainer from "./context/basic/CharContainer";
 // import ProductContainer from "./LifeCycle/memoization/ProductContainer";
 // import SideEffect from "./LifeCycle/function/SideEffect";
 // import LifeCycleContainer from "./LifeCycle/class/LifeCycleContainer";
@@ -44,10 +49,16 @@ function App() {
         // <LifeCycleContainer />
         // <SideEffect />
         // <ProductContainer />
-        <div>
-            <StyledComponent01 />
-            <GlobalStyle />
-        </div>
+        // <ThemeProvider theme={theme}>
+        //     <div>
+        //         <StyledComponent01 />
+        //         <GlobalStyle />
+        //     </div>
+        //     <BasicContainer />
+        //     <FontAwesome />
+        // </ThemeProvider>
+        <>리엑트 공부!</>
+        // <CharContainer />
     );
 }
 
