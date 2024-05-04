@@ -1,6 +1,8 @@
-import { ThemeProvider } from "styled-components";
+// import { ThemeProvider } from "styled-components";
 import "./App.css";
-import AnimalsContainer from "./context/expert/AnimalsContainer";
+// import AnimalsContainer from "./context/expert/AnimalsContainer";
+// import CountContainer from "./pages/count/CountContainer";
+import FontContainer from "./pages/font/FontContainer";
 // import StyledComponent01 from "./style/basic/StyledComponent01";
 // import GlobalStyle from "./style/global";
 // import theme from "./style/theme";
@@ -61,7 +63,9 @@ function App() {
         // <>리엑트 공부!</>
         // <CharContainer />
 
-        <AnimalsContainer />
+        // <AnimalsContainer />
+        // <CountContainer />
+        <FontContainer />
     );
 }
 
