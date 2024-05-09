@@ -1,8 +1,12 @@
 // import { ThemeProvider } from "styled-components";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Main from "./pages/main/Main";
+import Intro from "./pages/intro/Intro";
+import Job from "./pages/job/Job";
 // import AnimalsContainer from "./context/expert/AnimalsContainer";
 // import CountContainer from "./pages/count/CountContainer";
-import FontContainer from "./pages/font/FontContainer";
+// import FontContainer from "./pages/font/FontContainer";
 // import StyledComponent01 from "./style/basic/StyledComponent01";
 // import GlobalStyle from "./style/global";
 // import theme from "./style/theme";
@@ -65,7 +69,16 @@ function App() {
 
         // <AnimalsContainer />
         // <CountContainer />
-        <FontContainer />
+        // <FontContainer />
+        <>
+            <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/intro" element={<Intro />} />
+                <Route path="/job" element={<Job />}>
+                    <Route path=":title" element={<Job />} />
+                </Route>
+            </Routes>
+        </>
     );
 }
 
