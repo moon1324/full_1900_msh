@@ -1,9 +1,11 @@
 // import { ThemeProvider } from "styled-components";
 import { Route, Routes } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/main/Main";
 import Intro from "./pages/intro/Intro";
 import Job from "./pages/job/Job";
+import router from "./routes/router";
 // import AnimalsContainer from "./context/expert/AnimalsContainer";
 // import CountContainer from "./pages/count/CountContainer";
 // import FontContainer from "./pages/font/FontContainer";
@@ -71,13 +73,14 @@ function App() {
         // <CountContainer />
         // <FontContainer />
         <>
-            <Routes>
+            {/* <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/intro" element={<Intro />} />
                 <Route path="/job" element={<Job />}>
                     <Route path=":title" element={<Job />} />
                 </Route>
-            </Routes>
+            </Routes> */}
+            <RouterProvider router={router} />
         </>
     );
 }

@@ -28,15 +28,23 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //     </React.StrictMode>
 // );
 
+// root.render(
+//     <>
+//         <BrowserRouter>
+//         <Provider store={store}>
+//             <RouteProvider>
+//                 <App />
+//             </RouteProvider>
+//         </Provider>
+//         </BrowserRouter>
+//     </>
+// );
+
 root.render(
     <>
-        <BrowserRouter>
-            <Provider store={store}>
-                <RouteProvider>
-                    <App />
-                </RouteProvider>
-            </Provider>
-        </BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
     </>
 );
 
