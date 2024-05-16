@@ -30,3 +30,6 @@ react/resource/
 
 # node_modules of 'study' in react folder
 react/workspace/study/node_modules
+# node_modules of 'todo' in react folder
+react/workspace/todo/node_modules
+
