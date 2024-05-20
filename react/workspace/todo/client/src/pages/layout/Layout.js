@@ -8,6 +8,7 @@ import {
     faSearch,
     faBell,
     faUser,
+    faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Layout = () => {
@@ -32,6 +33,13 @@ const Layout = () => {
                     <NavLink to={"/bell"}>
                         <FontAwesomeIcon icon={faBell} className="icon" />
                         <p>알림</p>
+                    </NavLink>
+                    <NavLink to={"/todo"}>
+                        <FontAwesomeIcon
+                            icon={faPenToSquare}
+                            className="icon"
+                        />
+                        <p>할일</p>
                     </NavLink>
                     <NavLink to={"/my"}>
                         <FontAwesomeIcon icon={faUser} className="icon" />
