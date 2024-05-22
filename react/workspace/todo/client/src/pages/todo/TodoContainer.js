@@ -51,18 +51,23 @@ const TodoContainer = () => {
                 setIsTodoUpdate={setIsTodoUpdate}
                 isTodoUpdate={isTodoUpdate}
             />
-            {<p className="sub-title">남은 할 일:😒 {todos.length}개 </p>}
+            {
+                <p className="sub-title">
+                    남은 할 일:😒 {todos && todos.length}개{" "}
+                </p>
+            }
             {/* map함수 이용해서 todo 컴포넌트 만들기,  todos, getTodos props로 보내기 */}
             <ul>
-                {todos.map((todo, i) => (
-                    <Todo
-                        key={i}
-                        todo={todo}
-                        getTodos={getTodos}
-                        setIsTodoUpdate={setIsTodoUpdate}
-                        isTodoUpdate={isTodoUpdate}
-                    />
-                ))}
+                {todos &&
+                    todos.map((todo, i) => (
+                        <Todo
+                            key={i}
+                            todo={todo}
+                            getTodos={getTodos}
+                            setIsTodoUpdate={setIsTodoUpdate}
+                            isTodoUpdate={isTodoUpdate}
+                        />
+                    ))}
             </ul>
         </div>
     );

@@ -77,6 +77,11 @@
       "name": "김영희",
       "age": 25,
       "address": "인천광역시"
+    },
+    {
+      "id": "2d68",
+      "email": "michaelm00n@naver.com",
+      "password": "test123!"
     }
   ]
 }
