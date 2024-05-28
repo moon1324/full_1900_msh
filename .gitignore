@@ -20,6 +20,7 @@ css/resource/
 git/resource/
 js/resource/
 react/resource/
+node/resource/
 
 !html/resource/images
 
@@ -32,4 +33,7 @@ react/resource/
 react/workspace/study/node_modules
 # node_modules of 'todo' in react folder
 react/workspace/todo/node_modules
+# node_modules of node folder
+node/workspace/node_modules
+
 
