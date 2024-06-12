@@ -4,9 +4,12 @@ import { useForm } from "react-hook-form";
 import BasicButton from "../../components/button/BasicButton";
 // import BasicInput from "../../components/input/BasicInput";
 import Input from "../../components/input/style";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     // console.log(useForm());
+
+    const navigate = useNavigate();
 
     const {
         // 회원가입할때 각각의 데이터들을 가지고있다
@@ -20,20 +23,19 @@ const SignUp = () => {
     } = useForm({ mode: "onChanage" });
 
     // email 정규식 문법
-    const emailRegex =
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
     return (
         <S.Form
             onSubmit={handleSubmit(async (data) => {
                 // 들고 온 form 데이터를 fetching 하기 위한 로직
-                // console.log(data);
-                // const { email, password } = data;
+                console.log(data);
+                const { email, password } = data;
                 // {email:"", password:""}
                 // http://localhost:4000/users 경로로 회원가입 시키기
 
-                await fetch("http://localhost:4000/users", {
+                await fetch("http://localhost:8000/user/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -42,11 +44,21 @@ const SignUp = () => {
                         email: data.email,
                         password: data.password,
                     }),
-                }).then((response) => {
-                    console.log(response, "리스폰스 데이터");
-                    if (!response.ok) return console.log(`Error ${response}`);
-                });
-                // .then((res)=>res.json()).then(console.log).catch(console.error)
+                })
+                    // .then((response) => {
+                    //     console.log(response, "리스폰스 데이터");
+                    //     if (!response.ok) return console.log(`Error ${response}`);
+                    // })
+                    .then((res) => res.json())
+                    // .then(console.log)
+                    .then((res) => {
+                        if (res.registerSuccess) {
+                            alert(res.message);
+                        }
+                        // 리다이렉트
+                        navigate("/signIn");
+                    })
+                    .catch(console.error);
             })}
         >
             {/* email */}
@@ -69,14 +81,8 @@ const SignUp = () => {
                         },
                     })}
                 />
-                {errors?.email?.type === "required" && (
-                    <S.ConfirmMessage>이메일을 입력해주세요.</S.ConfirmMessage>
-                )}
-                {errors?.email?.type === "pattern" && (
-                    <S.ConfirmMessage>
-                        이메일 양식에 맞게 입력해주세요.
-                    </S.ConfirmMessage>
-                )}
+                {errors?.email?.type === "required" && <S.ConfirmMessage>이메일을 입력해주세요.</S.ConfirmMessage>}
+                {errors?.email?.type === "pattern" && <S.ConfirmMessage>이메일 양식에 맞게 입력해주세요.</S.ConfirmMessage>}
             </S.Label>
 
             {/* password */}
@@ -97,17 +103,8 @@ const SignUp = () => {
                         },
                     })}
                 />
-                {errors?.password?.type === "required" && (
-                    <S.ConfirmMessage>
-                        비밀번호를 입력해주세요.
-                    </S.ConfirmMessage>
-                )}
-                {errors?.password?.type === "pattern" && (
-                    <S.ConfirmMessage>
-                        소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리
-                        이상이어야 합니다
-                    </S.ConfirmMessage>
-                )}
+                {errors?.password?.type === "required" && <S.ConfirmMessage>비밀번호를 입력해주세요.</S.ConfirmMessage>}
+                {errors?.password?.type === "pattern" && <S.ConfirmMessage>소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상이어야 합니다</S.ConfirmMessage>}
             </S.Label>
 
             {/* password confirm */}
@@ -126,31 +123,17 @@ const SignUp = () => {
                         validate: {
                             matchPassword: (value) => {
                                 const { password } = getValues();
-                                console.log(
-                                    value,
-                                    password,
-                                    value === password
-                                );
+                                console.log(value, password, value === password);
                                 return value === password;
                             },
                         },
                     })}
                 />
-                {errors?.passwordConfirm && (
-                    <S.ConfirmMessage>
-                        비밀번호를 확인해주세요.
-                    </S.ConfirmMessage>
-                )}
+                {errors?.passwordConfirm && <S.ConfirmMessage>비밀번호를 확인해주세요.</S.ConfirmMessage>}
             </S.Label>
 
             {/* submit 버튼 */}
-            <BasicButton
-                size={"full"}
-                shape={"small"}
-                variant={"black"}
-                color={"white"}
-                disabled={isSubmitting}
-            >
+            <BasicButton size={"full"} shape={"small"} variant={"black"} color={"white"} disabled={isSubmitting}>
                 회원가입
             </BasicButton>
         </S.Form>

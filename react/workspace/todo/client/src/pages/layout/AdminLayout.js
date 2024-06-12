@@ -1,25 +1,11 @@
 import React from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 // Layout.js의 스타일 불러오기
 import S from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faSearch, faBell, faUser, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { setPreviousURL } from "../../modules/user";
 
-const Layout = () => {
-    // 비로그인 회원이 myPage 접근을 못하게 막는 로직
-    const location = useLocation();
-    const dispatch = useDispatch();
-
-    // url중에서 uri만 분리
-    const path = location.pathname + location.search;
-    console.log(path);
-
-    if (path !== "/my") {
-        dispatch(setPreviousURL(path));
-    }
-
+const AdminLayout = () => {
     return (
         <S.Background>
             <S.Wrapper>
@@ -56,4 +42,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default AdminLayout;

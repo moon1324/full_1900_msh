@@ -5,6 +5,8 @@ import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
 import PageNotFound from "../pages/error/PageNotFound";
 import Layout from "../pages/layout/Layout";
+import AdminLayout from "../pages/layout/AdminLayout";
+import MyPage from "../pages/myPage/MyPage";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,16 @@ const router = createBrowserRouter([
             {
                 path: "/signUp",
                 element: <SignUp />,
+            },
+        ],
+    },
+    {
+        path: "/my",
+        element: <AdminLayout />,
+        children: [
+            {
+                path: "/my",
+                element: <MyPage />,
             },
         ],
     },

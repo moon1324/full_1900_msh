@@ -21,6 +21,7 @@ git/resource/
 js/resource/
 react/resource/
 node/resource/
+express/resource/
 
 !html/resource/images
 
@@ -35,5 +36,8 @@ react/workspace/study/node_modules
 react/workspace/todo/node_modules
 # node_modules of node folder
 node/workspace/node_modules
+# node_modules of express folder
+express/workspace/node_modules
+
 
 
