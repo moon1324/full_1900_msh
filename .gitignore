@@ -43,4 +43,7 @@ express/workspace/node_modules
 typescript/workspace/node_modules
 
 
+# all .env files
+/**/.env
+# express/workspace/.env
 
