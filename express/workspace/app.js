@@ -3,12 +3,18 @@ import connect from "./connect/connect.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import rootRouter from "./routes/rootRouter.js";
+import dotenv from "dotenv";
+import passport from "passport";
+import { initializePassport } from "./auth/auth.js";
 
 // MongoDB 연결
 connect();
 
 const app = express();
 const port = 8000;
+
+// .env 실행
+dotenv.config();
 
 // bodyparser
 app.use(bodyParser.json());
@@ -25,6 +31,10 @@ app.use(
         credential: true,
     })
 );
+
+// passport 로직 추가
+app.use(passport.initialize());
+initializePassport();
 
 // 라우팅 처리
 app.use("/", rootRouter);

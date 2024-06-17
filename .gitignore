@@ -22,6 +22,7 @@ js/resource/
 react/resource/
 node/resource/
 express/resource/
+typescript/resource/
 
 !html/resource/images
 
@@ -38,6 +39,8 @@ react/workspace/todo/node_modules
 node/workspace/node_modules
 # node_modules of express folder
 express/workspace/node_modules
+# node_modules of typescript folder
+typescript/workspace/node_modules
 
 
 

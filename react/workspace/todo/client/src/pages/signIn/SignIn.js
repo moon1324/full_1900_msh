@@ -31,7 +31,8 @@ const SignIn = () => {
             onSubmit={handleSubmit(async (data) => {
                 console.log(data);
                 // 로그인 로직
-                await fetch("http://localhost:8000/user/login", {
+                // await fetch("http://localhost:8000/user/login", {
+                await fetch("http://localhost:8000/user/passportLogin", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -44,8 +45,11 @@ const SignIn = () => {
                     .then((res) => res.json())
                     .then((res) => {
                         console.log(res);
-                        dispatch(setUser(res.user));
+                        let { token, user } = res;
+                        console.log(token, user);
+                        dispatch(setUser(user));
                         dispatch(setUserStatus(true));
+                        localStorage.setItem("token", token);
                     });
             })}
         >
