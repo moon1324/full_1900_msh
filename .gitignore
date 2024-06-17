@@ -24,6 +24,9 @@ node/resource/
 express/resource/
 typescript/resource/
 
+# All resource folders
+# /**/resource
+
 !html/resource/images
 
 !css/resource/fonts
@@ -31,19 +34,8 @@ typescript/resource/
 
 !js/resource/images
 
-# node_modules of 'study' in react folder
-react/workspace/study/node_modules
-# node_modules of 'todo' in react folder
-react/workspace/todo/node_modules
-# node_modules of node folder
-node/workspace/node_modules
-# node_modules of express folder
-express/workspace/node_modules
-# node_modules of typescript folder
-typescript/workspace/node_modules
-
+# All node_modules
+/**/node_modules
 
 # all .env files
 /**/.env
-# express/workspace/.env
-
