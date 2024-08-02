@@ -1,0 +1,5 @@
+npx create-react-app [프로젝트 이름] --template typescript
+yarn create react-app react-ts --template typescript
+
+npm install typescript @types/node @types/react @types/react-dom @types/jest
+yarn add typescript @types/node @types/react @types/react-dom @types/jest
